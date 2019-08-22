@@ -3,10 +3,13 @@
 Here, since the problem asked us to store data in key-value pairs (our_cache.set(1, 1)), we here use python dictionary (maps) to store the key-value pairs.
 
 2. Keep track of the sequence of new data when added. 
-Since python dictionary is not ordered, we can actually use an array because it's good to remove data using specific indexes. However, since the problem requires that the time complexity should be O(1), we move to Deque in python, see https://www.geeksforgeeks.org/deque-in-python/, which provides an O(1) time complexity for append and pop operations. 
+Since python dictionary is not ordered, we can actually use an array because it's good to remove data using specific indexes. 
+However, since the problem requires that the time complexity should be O(1), we move to Deque in python, 
+see https://www.geeksforgeeks.org/deque-in-python/, which provides an O(1) time complexity for append and pop operations. 
 
 3. When adding new value pairs, step 1 and 2 should be linked together to both change stored values and keep track of the changing sequences.
 '''
+#Run in a jupyter notebook, python 3.
 import collections
 class LRU_Cache:
     def __init__(self,capacity):
@@ -22,7 +25,7 @@ class LRU_Cache:
         if len(self.key_orders) >= self.capacity:
             first = self.key_orders.popleft() # get the key of first item
             print ("! out of cache's capacity, delete first item whose key is ", first)
-            del self.value[first] # delete item in a dictionary, https://stackoverflow.com/questions/5844672/delete-an-element-from-a-dictionary
+            del self.value[first] # delete an item in a dictionary, https://stackoverflow.com/questions/5844672/delete-an-element-from-a-dictionary
             self.value[key] = value # add new key-value pairs
             self.key_orders.append(key) # add new key sequence
         else:
@@ -53,4 +56,8 @@ our_cache.put(7, 6)
 
 # Print current cache
 print ("Current cache is ", our_cache.value)
+#! out of cache's capacity, delete first item whose key is  1
+#! out of cache's capacity, delete first item whose key is  2
+#Current cache is  {3: 3, 4: 4, 5: 5, 6: 6, 7: 6}
+
 # Test completed

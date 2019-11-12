@@ -1,0 +1,17 @@
+Explanation for Project 1_Show me the data structure, Problem 5:Blockchain
+
+# To build a block chain, we must add several features to a Block.
+# A block should have the function to calculate hash values, get current timestamps, get its own data
+#and hashed information, and also importantly, the link with previous blocks.
+# For hash calculation, we used the code offered in the course work, to use the hashlib library.
+# To get current time, we used python datetime library
+# We initialize the Block with all the above attributes, and we also initiate a self.next attribute to store the next Block
+
+# After we well-defined a Block, we now move to define BlockChain.
+# A blockchain must have a append function so that we can add single block element to it.
+# Through traversing the blocks, we move to the end of the blockchain and we add the new block to it
+# We will also increase the length for the built BlockChain.
+# Actually these process are similar to a linked list, just with the adding of more attributes to the blocks themselves,
+#i.e., the .timestamp, .hash, .data attributes.
+Time complexity: line 62 to 64, block traversing: O(n)
+Space complexity: O(n). For each time we append a list of n input blocks, we need n space to store those data.

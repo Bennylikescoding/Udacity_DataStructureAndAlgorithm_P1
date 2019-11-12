@@ -1,0 +1,9 @@
+Explanation for Project 1_Show me the data structure, Problem 2:File recursion
+
+The key here is to distinguish between a file name and a directory name.
+If it's a file name, then just return the filename, however, if we encountered a directory name, we should dive into that directory and search for new file names. Thus, recursion should be used if we come across a directory name.
+Given this, if .isfile is true, we append the file name into the output list if .isdir is true, we recursively do the find_files() function again to dive deep, using the new pathway. 
+Time complexity:
+O(n*m). In worst case, we run n times of recursion, and for each recursion, we loop through m folders, thus the time complexity is O(n*m)
+Space complexity:
+O(n*m). In recursion, space complexity is equal to O(n*m) where n is the depth of recursions (how many rounds of recursions) and m is the iteration needed to find the results for each recursion. Thus here, the worst case is the target file is located at the very bottom of the last folder, so to explore to the last folder, we need n times of recursion, and to dive deep into that folder, we need to explore m files under that folder. Thus, the space complexity is also O(n*m).

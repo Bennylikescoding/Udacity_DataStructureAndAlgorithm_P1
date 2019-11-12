@@ -1,0 +1,13 @@
+Explanation for Project 1_Show me the data structure, Problem 4:Active Directory
+
+# We here use recursion. 
+# First, we check if a user is already exist in the user lists of group, if it is, we return True
+# Then, if the user is not present in the user list of current group, we dive down to the groups under this group,
+#and check whether the user is in those groups. Here, we use the recursive method to re-run the function,
+#until we finally find the users.
+# Last, if we can't find the users in both cases, we return False
+Time complexity:
+For n groups and m subgroups of each group, the time complexity is O(n*m). The base case, if user in group.get_users() has O(n) time complexity. For recursive function, in worst case, we loop through m different (sub)groups, and for each (sub)groups, we return True if we find the user info. Thus the time complexity is O(n) * O(m) = O(n*m).
+
+Space complexity:
+Space complexity is equal to O(n*m) where n is the depth of recursion and m is the total number of recursion needed to find the result. Thus here, the worst case is the target user name is the last item of the last group, so to explore to the last group, we need n times of recursion through m groups, and then we go to explore n files under that folder. Thus the space complexity is O(n*m).

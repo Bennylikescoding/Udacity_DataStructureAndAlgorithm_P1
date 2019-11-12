@@ -1,0 +1,27 @@
+Explanation for Project 1_Show me the data structure, Problem 2:Huffman Coding
+
+To build a huffman coding, we use a binary tree to do this, though the process is a little complex:
+1. (#1. comments in the coding area)
+For any give strings, first we determine the letter frequency and sort them in ascending order of the values, using the python string.count() method and store them in a sorted list.
+2. from the sorted list, we turn each (letter, frequency) pair into node object and create a heap to store these nodes
+3. we create a heap tree based on the initialized heap and the list of node objects
+4. return the tree of the heap, now we completed the process of tree building
+5. Encode the input string. 
+5.1 We use post order tree traversing and a recursion method.
+Whenever we reach an existing left child, we add ‘0’ to our pathway, whenever we reach an existing right child, we add ‘1’ to our pathway. Now we get our codes to encode the input.
+5.2 Using our code in step 3.1, we encode the input message using a ‘+=‘ operator.
+Now the input data is encoded.
+6. For decoding, we make use of both the encoded ‘1’ or ‘0’ message, and the tree we build. If the upcoming number is ‘1’, we move to the right child, if ‘0’, left, get the letter attribute to reveal the hidden letter.
+
+Time complexity: for n characters in the input string:
+line 82 to 100: traversing all characters in the input string, O(n) + O(nlog(n)) + O(n), since O(nlog(n)) > O(n), this step actually has O(nlog(n)) complexity
+line 103 to 122: heap creation, O(n) + O(n)
+line 126 to 160: traverse function, worst case is O(n)
+line 163 to 172: encoding, O(n)
+line 175 to 202: we see that the end condition is when itera reaches upper_limit,  thus the iteration needed is the length of encoded binary message. Thus, for n numbers in encoded binary message, the overall iteration is also n times, thus we have O(n) time complexity.
+
+
+Thus, total time complexity is O(nlog(n))
+
+Space complexity:
+Since we are creating a dictionary and a heap, the space needed for a given number n of input is n (linearly dependent on the input size). Thus the space complexity is O(n).

@@ -1,0 +1,19 @@
+Explanation for Project 1_Show me the data structure, Problem 1:LRU cache
+
+1. Store the data. 
+Here, since the problem asked us to store data in key-value pairs (our_cache.set(1, 1)), we here use python dictionary (maps) to store the key-value pairs.
+
+2. Keep track of the sequence of new data when added. 
+Since python dictionary is not ordered, we can actually use an array because it's good to remove data using specific indexes. However, since the problem requires that the time complexity should be O(1), we move to Deque in python, see https://www.geeksforgeeks.org/deque-in-python/, which provides an O(1) time complexity for append and pop operations. 
+As the reviewer suggested, another choice is to use OrderedDict(), ref: https://www.geeksforgeeks.org/ordereddict-in-python/. This type of structure actually can store the order of a dictionary. Worth to try that next time!
+3. When adding new value pairs, step 1 and 2 should be linked together to both change stored values and keep track of the changing sequences.
+
+Complexity analysis: 
+Time complexity:  O(1)
+line 15: deque provides an O(1) time complexity
+line 18: Get function of a python dictionary has O(1) time complexity
+line 19 to 30: popleft, append has O(1) time complexity
+Thus, the overall time complexity is O(1).
+
+Space complexity:
+Since we are creating a dictionary, the space needed for a given number n of input is n (linearly dependent on the input size). Thus the space complexity is O(n).

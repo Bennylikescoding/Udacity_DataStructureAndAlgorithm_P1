@@ -1,0 +1,29 @@
+Explanation for Project 1_Show me the data structure, Problem 6:Union and Intersection
+
+# For the function of Union:
+# First, we make use of python set() to both store the values of a linkedList and to dereplicate the values
+# In this step, we traverse the linkedlist and get the values of each node, then store them in the set
+# Then, we build a new LinkedList using values from the set()
+
+# For the function of Intersection:
+# First, we again use python set() to both store the values of the first linkedList and also to dereplicate the values
+# Second, we loop through the second linkedList, check if the element exist in the set(), if not, we pass; if present, we output that element.
+
+Time complexity:
+- Union:
+line 68 to 70: for input n elements in llist_1, time complexity is O(n)
+line 73 to 75: for input n elements in llist_2, time complexity is O(n)
+line 77 to 80: list append, for 2n elements in emptylist, time complexity is O(2n)
+Thus the overall complexity is O(n) + O(n) + O(2n) = O(n)
+- Intersection:
+line 117 to 120: one while loop, for n elements in llist_1 and n elements, the time complexity is O(n)
+line 122 to 126: one while loop with a O(1) look up process using the python set() of each loop, thus time complexity is O(n) * O(1) = O(n)
+Thus the overall time complexity is O(n) + O(n) = O(n)
+
+Space complexity:
+- Union:
+For n input elements in llist_1 and n input elements in llist_2, we are creating a new linked list to hold them all together, and we then create a new new_llist to retrieve the results, thus the space complexity is O(n) + O(n) + O(n) = O(n)
+- Intersection:
+line 117 to line 120: for each n input element in llist_1, we create a set containing these n elements, thus the space complexity is O(n)
+line 122 to 126: we create a new new_llist linkedList, in worst case, we have to append n elements, thus space complexity is O(n)
+Thus, the overall space complexity is also O(n) + O(n) = O(n).
